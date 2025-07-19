@@ -28,7 +28,7 @@
             background-color: var(--background-color);
             color: var(--text-color);
             margin: 0;
-            padding: 2em;
+            padding: 1em; /* Adjusted padding for mobile */
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -93,7 +93,7 @@
         /* --- Component Styles --- */
         .container {
             background: var(--container-bg);
-            padding: 2em;
+            padding: 1em; /* Adjusted padding for mobile */
             border-radius: 12px;
             border: 1px solid var(--border-color);
             box-shadow: 0 8px 30px rgba(0,0,0,0.1);
@@ -113,7 +113,7 @@
 
         table {
             border-collapse: collapse;
-            margin: 2em auto;
+            margin: 1em auto;
         }
 
         td {
@@ -125,25 +125,26 @@
 
         .left-clues {
             width: auto;
-            min-width: 120px;
-            height: 34px;
+            min-width: 80px; /* Adjusted for mobile */
+            height: auto;
             text-align: right;
             padding-right: 10px;
             border: none;
         }
         
         .top-clues td {
-            width: 34px;
+            width: auto;
             height: auto;
-            min-height: 130px;
+            min-height: 80px; /* Adjusted for mobile */
             vertical-align: bottom;
             padding: 5px 2px;
             border: none;
         }
         
         .grid td {
-            width: 32px;
-            height: 32px;
+            /* FIX: Simplified mobile-first style for robust square shape */
+            width: 6vw; 
+            aspect-ratio: 1 / 1; /* Enforce square shape */
             transition: background-color 0.2s ease;
         }
 
@@ -157,10 +158,11 @@
         
         .controls-wrapper {
             display: flex;
+            flex-direction: column; 
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 1.5em;
+            gap: 1em;
             padding: 1em;
             background-color: rgba(0,0,0,0.05);
             border-radius: 8px;
@@ -172,6 +174,8 @@
             display: flex;
             align-items: center;
             gap: 0.5em;
+            flex-wrap: wrap; 
+            justify-content: center;
         }
         
         .control-group label {
@@ -209,7 +213,7 @@
         
         .top-clues .clue-input {
             width: 100%;
-            height: 120px;
+            height: 100px;
             padding: 8px 4px;
             line-height: 1.5;
             resize: none; 
@@ -265,6 +269,23 @@
             border-radius: 8px;
             cursor: pointer;
             transition: border-color 0.3s;
+        }
+        
+        @media (min-width: 768px) {
+            body {
+                padding: 2em;
+            }
+            .container {
+                padding: 2em;
+            }
+            .controls-wrapper {
+                flex-direction: row; 
+            }
+            /* FIX: Set a fixed, square size for grid cells on larger screens */
+            .grid td {
+                width: 32px;
+                height: 32px;
+            }
         }
     </style>
 </head>
